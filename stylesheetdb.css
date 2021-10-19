@@ -1,0 +1,45 @@
+/* Background image */
+html, body {
+    background-image: url('images/wallpaper.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+#site_nav {
+    background-color: #fff;
+    border-bottom: solid;
+    border-color: rgb(5, 189, 202);
+}
+
+/* Main wrapper */
+#wrapper {
+    margin: 20px auto;
+}
+
+/* Bootstrap 'toast' notifications*/
+#toast-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10000;
+    padding: 20px;
+}
+
+/* All links */
+a {
+    color: #000000;
+}
+a:hover {
+    color: #6ab5f1;
+}
+
+/* Footer */
+#site-footer {
+    background-color: rgb(5, 189, 202);
+    padding: 15px;
+    text-align: center;
+}
