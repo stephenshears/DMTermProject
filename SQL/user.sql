@@ -1,0 +1,11 @@
+CREATE TABLE user ( 
+
+userID		INT		AUTO INCREMENT PRIMARY KEY, 
+
+email 		VARCHAR(50)	NOT NULL, 
+
+fName		VARCHAR(20)	NOT NULL, 
+
+lName		VARCHAR(20)	NOT NULL, 
+
+); 

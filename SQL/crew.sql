@@ -1,10 +1,10 @@
-CREATE TABLE cast ( 
+CREATE TABLE crew ( 
 
 movieID		INT, 
 
 starID		INT, 
 
-characterName	VARCHAR(40)		NOT NULL, 
+jobTitle		VARCHAR(20)		NOT NULL, 
 
 PRIMARY KEY (movieID, starID), 
 
