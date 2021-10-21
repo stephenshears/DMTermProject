@@ -1,0 +1,7 @@
+CREATE TABLE genre ( 
+
+genreID	INT		AUTO INCREMENT PRIMARY KEY, 
+
+genreName 	VARCHAR(20)	NOT NULL 
+
+); 
