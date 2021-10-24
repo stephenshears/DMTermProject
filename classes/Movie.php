@@ -108,6 +108,10 @@ class Movie {
     public static function factory($options = array(), $db) {
         $movie = array();
 
+        $qParts = array();
+        if (array_key_exists('date_released_max', $options))
+            $qParts[] = "`releaseDate` <= '{$options['date_released_max']}'";
+
         $orderBy = "";
         if (array_key_exists('order_by', $options)) {
             $orderBy = "`" . $options['order_by'] . "` " .
@@ -125,19 +129,19 @@ class Movie {
         
         $result = $db->query($query);
         while ($data = $result->fetch_assoc()) {
-            $product = new Product();
-            $product->setId($data['movieID']);
-            $product->settitle($data['title']);
-            $product->setbudget($data['budget']);
-            $product->setreleaseDate($data['releaseDate']);
-            $product->setruntime($data['runtime']);
-            $product->setDescription($data['description']);
-            $product->setURL($data['URL']);
-            $product->setembargo($data['embargo']);
-            $movie[] = $product;
+            $movie = new Movie();
+            $movie->setId($data['movieID']);
+            $movie->settitle($data['title']);
+            $movie->setbudget($data['budget']);
+            $movie->setreleaseDate($data['releaseDate']);
+            $movie->setruntime($data['runtime']);
+            $movie->setDescription($data['description']);
+            $movie->setURL($data['URL']);
+            $movie->setembargo($data['embargo']);
+            $movies[] = $movie;
         }
 
-        return $movie;
+        return $movies;
     }
 }
 
