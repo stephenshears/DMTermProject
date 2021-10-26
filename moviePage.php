@@ -1,14 +1,5 @@
 <?php
 
-
-//Connect to DB
-$db = new mysqli("localhost:3306", "root", "", "movieblock");
-if ($db->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $db->connect_errno . ") " .
-    $db->connect_error;
-    return;
-}
-
 require_once('classes/Movie.php');
 
 if (!array_key_exists('id', $_REQUEST) || !is_numeric($_REQUEST['id'])) {
@@ -42,6 +33,8 @@ $db->set_charset("utf8");
                 <h4>Budget</h4>
                 <p>$<?= $movie->getbudget() ?></p>
                 <hr>
+                <form action="./?action=delete_Process&id=<?= $movie->getId() ?>" method="post">
+                <button type="submit" class="btn btn-primary">Delete</button>
             </div>
         </div>
     </div>

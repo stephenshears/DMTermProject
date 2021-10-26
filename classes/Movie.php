@@ -109,8 +109,9 @@ class Movie {
         $movie = array();
 
         $qParts = array();
-        if (array_key_exists('date_released_max', $options))
+        if (array_key_exists('date_released_max', $options)){
             $qParts[] = "`releaseDate` <= '{$options['date_released_max']}'";
+        }
 
         $orderBy = "";
         if (array_key_exists('order_by', $options)) {
@@ -119,8 +120,9 @@ class Movie {
         }
 
         $limit = "";
-        if (array_key_exists('limit', $options))
+        if (array_key_exists('limit', $options)){
             $limit = "LIMIT " . $options['limit'];
+        }
 
         $query = "SELECT * FROM `movieblock`.`movie`" .
             (count($qParts) > 0 ? " WHERE " . implode(" AND ", $qParts) : "") .
@@ -157,20 +159,34 @@ class Movie {
         $qParts[] = "`embargo` = '" . $this->db->real_escape_string($this->embargo) . "'";
 
         $query = "INSERT INTO `movieblock`.`movie` SET " . implode(', ', $qParts);
-/*
-        $query_html = htmlspecialchars($query);
-        print "<b> The query is: </b> " . $query_html . "<br />";
-*/
+
         if ($this->db->query($query)) {
             print "Error - the query could not be executed";
             $error =  $this->db->error;
             print "<p>" . $error . "</p>";
         }
 
-        if ($this->id === 0)
+        if ($this->id === 0) {
             $this->id = $this->db->insert_id;
+        }
 
         return true;
+    }
+
+    public function existsCheck() {
+        $query = "SELECT `title` FROM `movieblock`.`movie` WHERE `title` =" . ($this->title) . " AND `releaseDate` = " . ($this->releaseDate). " ";
+        if ($this->db->query($query)) {
+            return false;
+        }
+        return true;
+    }
+
+    public function deleteFrom() {
+        $query = "DELETE FROM `movieblock`.`movie` WHERE `movieID` = " . $this->id;
+        if ($this->db->query($query)) {
+            return true;
+        }
+            return false;
     }
 }
 
