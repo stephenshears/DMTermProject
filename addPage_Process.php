@@ -12,6 +12,11 @@
     $movie->setURL($_REQUEST['URL']);
     $movie->setembargo($_REQUEST['embargo']);
 
+    if(!$movie->existsCheck()){
+        header("Location: ./?action=addPage&error=1");
+        exit();
+    }
+
     if ($movie->save()) {
         header("Location: ./");
     } else {

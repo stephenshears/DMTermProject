@@ -7,7 +7,7 @@
         <form action="./?action=addPage_Process" method="post">
             <li class="list-group-item">
                 <div class="form-group">
-                    <input type="text" name="title" placeholder="Film Title" class="form-control" required>
+                    <input type="text" name="title" placeholder="Film Title" class="form-control" maxlength="60" required>
                 </div>
                 <p class="lead">Release Date:</p>
                 <div class="form-group">
@@ -20,13 +20,13 @@
                     <input type="number" name="runtime" placeholder="Film Runtime in Minutes" min="90" max="300" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="description" placeholder="Film Description" class="form-control" required>
+                    <input type="text" name="description" placeholder="Film Description" class="form-control" maxlength="1000" required>
                 </div>
                 <div class="form-group">
                     <input type="text" name="embargo" placeholder="Film's Embargo if it has one" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="URL" placeholder="Film Cover Art URL" class="form-control">
+                    <input type="text" name="URL" placeholder="Film Cover Art URL" class="form-control" maxlength="1000">
                 </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-brand btn-block">Next</button>

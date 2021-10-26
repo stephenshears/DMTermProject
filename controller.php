@@ -5,6 +5,11 @@ if (!array_key_exists('action', $_REQUEST)) {
 }
 
 switch($_REQUEST['action']) {
+    case 'delete_Process':
+        require_once('delete_Process.php');
+        break;
+    case 'addPage_Process':
+        require_once('addPage_Process.php');
     case 'addPage':
         require_once('addPage.php');
         break;
