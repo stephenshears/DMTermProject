@@ -32,7 +32,7 @@ $newReleases = Movie::factory($options, $db);
             <div class="col-sm-3">
             <a href="./?action=moviePage&id=<?= $movie->getId() ?>">
                 <li class="list-group-item">
-                    <img class="card-img" src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>">
+                    <img class="card-img" src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>" style="height: 200px; width: auto;">
                     <h4><?= $movie->gettitle() ?></h4>
                     <strong>Release Date:</strong> <?= $movie->getreleaseDate("n/j/Y") ?>
                 </li>

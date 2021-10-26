@@ -30,7 +30,7 @@ $db->set_charset("utf8");
                     <strong>Release Date:</strong> <?= $movie->getreleaseDate("n/j/Y") ?>
                 </p>
                 <hr>
-                <img src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>" class="img-thumbnail" style="width: 50%; height: auto;">
+                <img src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>" class="img-thumbnail" style="width: auto; height: 500px;">
             </div>
             <div class="col-sm-6">
                 <h2> OverView </h2>

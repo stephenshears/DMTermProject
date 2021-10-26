@@ -13,6 +13,7 @@ html, body {
     background-color: #fff;
     border-bottom: solid;
     border-color: rgb(5, 189, 202);
+    justify-content: space-between;
 }
 
 /* Main wrapper */
