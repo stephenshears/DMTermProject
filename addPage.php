@@ -4,8 +4,7 @@
         <h1 class="display-4"> Add a Film here </h1>
         <br>
 
-        <form action="./" method="post">
-            <input type="hidden" name="action" value="signup_process">
+        <form action="./?action=addPage_Process" method="post">
             <li class="list-group-item">
                 <div class="form-group">
                     <input type="text" name="title" placeholder="Film Title" class="form-control" required>
