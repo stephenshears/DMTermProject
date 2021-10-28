@@ -164,20 +164,13 @@ class Movie {
             print "Error - the query could not be executed";
             $error =  $this->db->error;
             print "<p>" . $error . "</p>";
+            return false;
         }
 
         if ($this->id === 0) {
             $this->id = $this->db->insert_id;
         }
 
-        return true;
-    }
-
-    public function existsCheck() {
-        $query = "SELECT `title` FROM `movieblock`.`movie` WHERE `title` =" . ($this->title) . " AND `releaseDate` = " . ($this->releaseDate). " ";
-        if ($this->db->query($query)) {
-            return false;
-        }
         return true;
     }
 
