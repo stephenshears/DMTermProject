@@ -1,8 +1,15 @@
 
-
     <div class="container" id="wrapper">
         <h1 class="display-4"> Add a Film here </h1>
         <br>
+
+    <?php
+        if(array_key_exists('error', $_REQUEST) && $_REQUEST['error'] == '1'){
+    ?>
+        <form action="./?action=main" method="post">
+            <button type="submit" class="btn btn-light">There is already a film within the database with that title and date, click here to search for it from the homepage.</button>
+        </form>
+    <?php } ?>
 
         <form action="./?action=addPage_Process" method="post">
             <li class="list-group-item">
