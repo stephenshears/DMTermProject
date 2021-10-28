@@ -15,7 +15,7 @@ $newReleases = Movie::factory($options, $db);
 
     <div class="container" id="wrapper">
         <br>
-        <form action="./" method="post">
+        <form action="./?action=searchPage" method="post">
         <div class="row align-items-start">
             <div class="col-sm-10">
                 <input type="text" name="search_bar" placeholder="Search for movie" class="form-control" required>

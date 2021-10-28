@@ -19,6 +19,9 @@ switch($_REQUEST['action']) {
     case 'moviePage':
         require_once('moviePage.php');
         break;
+    case 'searchPage':
+        require_once('searchPage.php');
+        break;
     case 'main':
     default:
         require_once('main.php');
