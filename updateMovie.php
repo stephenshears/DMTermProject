@@ -7,6 +7,17 @@ if (!array_key_exists('id', $_REQUEST) || !is_numeric($_REQUEST['id'])) {
     return;
 }
 
+$searchQuery = "SELECT pass FROM movieblock.admin WHERE adminID = 0 LIMIT 1";
+    $result = $db->query($searchQuery);
+    if (!$result) {
+        print "Error - the query could not be executed";
+        $error = mysqli_error($db);
+        print "<p>" . $error . "</p>";
+        exit;
+    }
+    $info = $result->fetch_assoc();
+    if($info['pass'] == $_REQUEST['pass']){
+
 $movie = new Movie((int)$_REQUEST['id']);
 $db->set_charset("utf8");
 
@@ -46,3 +57,9 @@ $db->set_charset("utf8");
             </li>
         </form>
     </div>
+<?php
+    }
+    else{
+        print("That password was incorrect. Please try again.");
+    }
+?>

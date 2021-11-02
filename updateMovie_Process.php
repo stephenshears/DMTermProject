@@ -1,5 +1,4 @@
 <?php
-
     require_once('classes/Movie.php');
 
     $movie = new Movie;
@@ -15,7 +14,6 @@
     if (!$movie->update()) {
         header("Location: ./");
     } else {
-        header("Location: ./?action=addPage&error=1");
+        header("Location: ./?action=moviePage&error=1");
     }
-
 ?>
