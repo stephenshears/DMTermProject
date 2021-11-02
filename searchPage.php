@@ -15,16 +15,6 @@
         <?php
             require_once('classes/Movie.php');
 
-            try 
-            {
-                $db = new mysqli("localhost:3306", "root", "", "movieblock");
-            } 
-            catch (Exception $e) 
-            {
-            echo "Failed to connect to MySQL: (" . $db->connect_errno . ") " .$db->connect_error;
-            return false;
-            }
-
             $searchQuery = "SELECT movieID, title, releaseDate, URL FROM movie WHERE title LIKE '%" . ($_POST['search_bar']) . "%'";
             $result = mysqli_query($db, $searchQuery);
             if (!$result) {
