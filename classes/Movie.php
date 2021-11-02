@@ -174,6 +174,34 @@ class Movie {
         return true;
     }
 
+    public function update() {
+
+        $qParts = array();
+
+        $qParts[] = "`title` = '" . $this->db->real_escape_string($this->title) . "'";
+        $qParts[] = "`description` = '" . $this->db->real_escape_string($this->description) . "'";
+        $qParts[] = "`URL` = '" . $this->db->real_escape_string($this->URL) . "'";
+        $qParts[] = "`budget` = '" . $this->db->real_escape_string($this->budget) . "'";
+        $qParts[] = "`releaseDate` = '" . $this->db->real_escape_string($this->releaseDate) . "'";
+        $qParts[] = "`runtime` = '" . $this->db->real_escape_string($this->runtime) . "'";
+        $qParts[] = "`embargo` = '" . $this->db->real_escape_string($this->embargo) . "'";
+
+        $query = "UPDATE `movieblock`.`movie` SET " . implode(', ', $qParts) . " WHERE `movieID` =" . $this->id;
+
+        if ($this->db->query($query)) {
+            print "Error - the query could not be executed";
+            $error =  $this->db->error;
+            print "<p>" . $error . "</p>";
+            return false;
+        }
+
+        if ($this->id === 0) {
+            $this->id = $this->db->insert_id;
+        }
+
+        return true;
+    }
+
     public function deleteFrom() {
         $query = "DELETE FROM `movieblock`.`movie` WHERE `movieID` = " . $this->id;
         if ($this->db->query($query)) {

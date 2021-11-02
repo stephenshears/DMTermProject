@@ -8,6 +8,12 @@ switch($_REQUEST['action']) {
     case 'test':
         require_once('addPage_Process.php');
         break;
+    case 'updateMovie':
+        require_once('updateMovie.php');
+        break;
+    case 'updateMovie_Process':
+        require_once('updateMovie_Process.php');
+        break;
     case 'delete_Process':
         require_once('delete_Process.php');
         break;
