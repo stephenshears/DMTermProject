@@ -12,7 +12,7 @@
     $movie->setURL($_REQUEST['URL']);
     $movie->setembargo($_REQUEST['embargo']);
 
-    if ($movie->save()) {
+    if (!$movie->save()) {
         header("Location: ./");
     } else {
         header("Location: ./?action=addPage&error=1");

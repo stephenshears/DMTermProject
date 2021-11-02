@@ -30,7 +30,7 @@
                     <input type="text" name="description" placeholder="Film Description" class="form-control" maxlength="1000" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="embargo" placeholder="Film's Embargo if it has one" class="form-control">
+                    <input type="date" name="embargo" placeholder="Film's Embargo if it has one" class="form-control">
                 </div>
                 <div class="form-group">
                     <input type="text" name="URL" placeholder="Film Cover Art URL" class="form-control" maxlength="1000">

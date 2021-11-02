@@ -33,8 +33,13 @@ $db->set_charset("utf8");
                 <h4>Budget</h4>
                 <p>$<?= $movie->getbudget() ?></p>
                 <hr>
+                <form action="./?action=updateMovie&id=<?= $movie->getId() ?>" method="post">
+                <button type="submit" class="btn btn-primary">Edit</button>
+                </form>
+                <br>
                 <form action="./?action=delete_Process&id=<?= $movie->getId() ?>" method="post">
-                <button type="submit" class="btn btn-primary">Delete</button>
+                <button type="submit" class="btn btn-secondary">Delete</button>
+                </form>
             </div>
         </div>
     </div>
