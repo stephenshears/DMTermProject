@@ -10,8 +10,8 @@
                 <label for="title">By Title</label><br>
                 <input type="radio" id="releaseDate" name="search" value="releaseDate">
                 <label for="releaseDate">By Release Date</label><br>
-                <input type="radio" id="budget" name="search" value="budget">
-                <label for="buget">By Budget</label>
+                <input type="radio" id="runtime" name="search" value="runtime">
+                <label for="buget">By Runtime</label>
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-light">Search</button>
