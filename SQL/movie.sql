@@ -1,20 +1,20 @@
 CREATE TABLE movie ( 
 
-movieID	INT			AUTO INCREMENT PRIMARY KEY,
+movieID	        INT			    AUTO_INCREMENT PRIMARY KEY,
 
-title		VARCHAR(60)		NOT NULL    UNIQUE,
+title		    VARCHAR(60)		NOT NULL    UNIQUE,
 
-budget		INT             NOT NULL    UNIQUE, 
+budget		    INT             NOT NULL    UNIQUE, 
 
-description	VARCHAR(300)	NOT NULL,
+description	    VARCHAR(1000)	NOT NULL,
 
-releaseDate	DATE			NOT NULL,
+releaseDate	    DATE			NOT NULL,
 
-runtime	TIME			NOT NULL,
+runtime	        TIME			NOT NULL,
 
-embargo	DATETIME,
+embargo	        DATETIME,
 
-cover   VARCHAR(100)
+URL             VARCHAR(150)
 
 );
 
