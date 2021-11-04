@@ -2,20 +2,27 @@
         <br>
         <form action="./?action=searchPage" method="post">
         <div class="row align-items-start">
-            <div class="col-sm-10">
-                <input type="text" name="search_bar" placeholder="Search for movie" class="form-control" required>
-            </div>
-            <div class="col-sm-2">
-                <button type="submit" class="btn btn-light" >Search</button>
-            </div>
+        <div class="col-sm-8">
+                    <input type="text" name="search_bar" placeholder="Search for movie" class="form-control" required>
+                </div>
+                <div class="col-sm-2">
+                <input type="radio" id="title" name="search" value="title" checked="checked">
+                <label for="title">By Title</label><br>
+                <input type="radio" id="releaseDate" name="search" value="releaseDate">
+                <label for="releaseDate">By Release Date</label><br>
+                <input type="radio" id="runtime" name="search" value="runtime">
+                <label for="buget">By Runtime</label>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-light">Search</button>
+                </div>
         </div>
         </form>
         <br>
         <br>
         <?php
-            require_once('classes/Movie.php');
 
-            $searchQuery = "SELECT movieID, title, releaseDate, URL FROM movie WHERE title LIKE '%" . ($_POST['search_bar']) . "%'";
+            $searchQuery = "SELECT movieID, title, releaseDate, URL FROM movie WHERE title LIKE '%" . ($_POST['search_bar']) . "%' ORDER BY ". $_POST['search'];
             $result = mysqli_query($db, $searchQuery);
             if (!$result) {
                 print "Error - the query could not be executed";
