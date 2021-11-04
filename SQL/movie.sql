@@ -2,7 +2,7 @@ CREATE TABLE movie (
 
 movieID	        INT			    AUTO_INCREMENT PRIMARY KEY,
 
-title		    VARCHAR(60)		NOT NULL    UNIQUE,
+title		    VARCHAR(60)		NOT NULL,
 
 budget		    INT             NOT NULL, 
 
