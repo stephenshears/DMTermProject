@@ -6,7 +6,7 @@
                     <input type="text" name="search_bar" placeholder="Search for movie" class="form-control" required>
                 </div>
                 <div class="col-sm-2">
-                <input type="radio" id="title" name="search" value="title">
+                <input type="radio" id="title" name="search" value="title" checked="checked">
                 <label for="title">By Title</label><br>
                 <input type="radio" id="releaseDate" name="search" value="releaseDate">
                 <label for="releaseDate">By Release Date</label><br>
