@@ -2,7 +2,7 @@
 
 require_once('classes/Movie.php');
 
-// Get new game releases
+// Get new movie releases
 $options = array(
     'date_released_max' => date('Y-m-d'),
     'order_by' => "releaseDate",
@@ -10,6 +10,15 @@ $options = array(
     'limit' => 4
 );
 $newReleases = Movie::factory($options, $db);
+
+// Get old movie releases
+$options = array(
+    'date_released_max' => "2000-1-1",
+    'order_by' => "releaseDate",
+    'order_dir' => "asc",
+    'limit' => 4
+);
+$oldReleases = Movie::factory($options, $db);
 ?>
 
     <div class="container" id="wrapper">
@@ -37,6 +46,22 @@ $newReleases = Movie::factory($options, $db);
         <br>
         <div class="row align-items-start">
         <?php foreach ($newReleases as $movie) { ?>
+            <div class="col-sm-3">
+            <a href="./?action=moviePage&id=<?= $movie->getId() ?>">
+                <li class="list-group-item">
+                    <img class="card-img" src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>" style="height: 200px; width: auto;">
+                    <h4><?= $movie->gettitle() ?></h4>
+                    <strong>Release Date:</strong> <?= $movie->getreleaseDate("n/j/Y") ?>
+                </li>
+            </a>
+            </div>
+        <?php } ?>
+        </div>
+        <h1> Classics </h1>
+        <hr>
+        <br>
+        <div class="row align-items-start">
+        <?php foreach ($oldReleases as $movie) { ?>
             <div class="col-sm-3">
             <a href="./?action=moviePage&id=<?= $movie->getId() ?>">
                 <li class="list-group-item">
