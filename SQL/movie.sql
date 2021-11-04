@@ -4,13 +4,13 @@ movieID	        INT			    AUTO_INCREMENT PRIMARY KEY,
 
 title		    VARCHAR(60)		NOT NULL    UNIQUE,
 
-budget		    INT             NOT NULL    UNIQUE, 
+budget		    INT             NOT NULL, 
 
 description	    VARCHAR(1000)	NOT NULL,
 
 releaseDate	    DATE			NOT NULL,
 
-runtime	        TIME			NOT NULL,
+runtime	        INT			    NOT NULL,
 
 embargo	        DATETIME,
 
