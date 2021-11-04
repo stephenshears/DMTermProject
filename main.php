@@ -10,7 +10,6 @@ $options = array(
     'limit' => 4
 );
 $newReleases = Movie::factory($options, $db);
-
 ?>
 
     <div class="container" id="wrapper">
@@ -33,7 +32,8 @@ $newReleases = Movie::factory($options, $db);
                 </div>
             </div>
         </form>
-        <br>
+        <h1> New Releases </h1>
+        <hr>
         <br>
         <div class="row align-items-start">
         <?php foreach ($newReleases as $movie) { ?>
