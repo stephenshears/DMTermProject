@@ -19,6 +19,13 @@ $db->set_charset("utf8");
                 <h1><?= $movie->gettitle() ?></h1>
                 <p class="mb-0">
                     <strong>Release Date:</strong> <?= $movie->getreleaseDate("n/j/Y") ?>
+                    <strong style="padding-left: 20px;">Genres: </strong> 
+                    <?= $genres = implode(', ', $movie->getGenres());
+                        if(empty($genres))
+                        {
+                            print("N/A");
+                        }
+                    ?>
                 </p>
                 <hr>
                 <img src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>" class="img-thumbnail" style="width: auto; height: 500px;">

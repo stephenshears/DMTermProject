@@ -1,0 +1,17 @@
+INSERT INTO genre (genreName) VALUES
+("Action"),
+("Adventure"),
+("Comedy"),
+("Dark Comedy"),
+("Satire"),
+("Absurdist"),
+("Crime"),
+("Fantasy"),
+("Horror"),
+("Slasher"),
+("Romance"),
+("Science Fiction"),
+("Drama"),
+("Thriller"),
+("Western"),
+("Historical");

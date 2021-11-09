@@ -10,6 +10,7 @@ class Movie {
     private $description;
     private $embargo;
     private $URL;
+    private $genres;
 
     function __construct($id = 0) {
         try {
@@ -35,6 +36,17 @@ class Movie {
                 $this->setDescription($info['description']);
                 $this->setURL($info['URL']);
             } else return false;
+
+            $genreQuery = "SELECT `genreName` FROM `moviegenre` NATURAL JOIN `genre` WHERE `moviegenre`.`movieID` = {$this->id} ";
+            $genreResult = $this->db->query($genreQuery);
+            if ($genreResult)
+            {
+                $this->setGenres($genreResult);
+            }
+            else
+            {
+                printf("Error: %s\n", $this->db->error);
+            }
         }
 
         return true;
@@ -72,6 +84,16 @@ class Movie {
         return $this->URL = $URL;
     }
 
+    public function setGenres($Genres)
+    {
+        $this->genres = array();
+        while($row = mysqli_fetch_array($Genres))
+        {
+            $this->genres[] = $row['genreName'];
+        }
+        return $this->genres;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -102,6 +124,11 @@ class Movie {
 
     public function getURL() {
         return $this->URL;
+    }
+
+    public function getGenres()
+    {
+        return $this->genres;
     }
 
     // Will be the factory function used to create multiple classes of this function within a web page.
