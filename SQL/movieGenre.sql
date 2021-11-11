@@ -1,4 +1,4 @@
-CREATE TABLE movieGenre ( 
+CREATE TABLE moviegenre ( 
 
 movieID	INT, 
 
