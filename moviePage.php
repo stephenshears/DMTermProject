@@ -53,6 +53,7 @@ $db->set_charset("utf8");
                     <button type="submit" class="btn btn-secondary">Delete</button>
                     </form>
                 </div>
+                <br>
                 <?php 
                 if(isset($_SESSION['status']))
                 {

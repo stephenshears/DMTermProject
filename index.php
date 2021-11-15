@@ -26,8 +26,33 @@ $db->set_charset("utf8");
     <link rel="stylesheet" href="stylesheetdb.css">
 
     <title>MovieBlock</title>
-
     <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {background-color: #ddd;}
+
+        .show {display: block;}
+
         .dropbtn {
         background: #f8f9fa;
         padding: 10px;
@@ -40,32 +65,6 @@ $db->set_charset("utf8");
         .dropbtn:hover, .dropbtn:focus {
         background-color: 0 0 0 0.5;
         }
-
-        .dropdown {
-        position: relative;
-        display: inline-block;
-        }
-
-        .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        }
-
-        .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        }
-
-        .dropdown a:hover {background-color: #ddd;}
-
-        .show {display: block;}
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -74,29 +73,26 @@ $db->set_charset("utf8");
     <nav class="navbar navbar-expand-lg navbar-light" id="site_nav">
         <a href="./?action=main"><img src="images/Title.jpg" alt="logo" width=376 height = 98></a>
 
-        <div class="text-right" id="addNew">Can't find the movie you want? <a href="./?action=addPage">Add here</a></div>
-
         <?php 
-            if(!isset($_SESSION['status']))
-            {
-                print(" <a href='./?action=loginUser'>
-                            <button type='submit' class='dropbtn'>Login as User</button>
-                        </a>");
-            }
-            else
-            {
-                print(" 
-                        <div class='dropdown'>
-                            <button onclick='showDropDown()' class='dropbtn'>" . $_SESSION['user'] . "</button>
-                            <div id='myDropdown' class='dropdown-content'>
-                                <a href='./?action=userPage'>My Profile</a>
-                                <a href='./?action=logoutUser_Process'>Logout</a>
-                            </div>
-                        </div>
-                    ");
-            }
+            if(!isset($_SESSION['status'])){
         ?>
-    </nav>
+                <a href='./?action=loginUser'>
+                    <button type='submit' class='btn btn-light'>Login as User</button>
+                </a>
+        <?php
+            }
+            else{
+        ?>
+                <div class='dropdown'>
+                    <button onclick='showDropDown()' class='dropbtn'><?php print('' . $_SESSION['user'] . ''); ?></button>
+                    <div id='myDropdown' class='dropdown-content'>
+                        <a href='./?action=userPage'>My Profile</a>
+                        <a href='./?action=logoutUser_Process'>Logout</a>
+                    </div>
+                </div>
+            <?php } ?>
+            <div class="text-right">Can't find the movie you want? <a href="./?action=addPage">Add here</a></div>
+        </nav>
 
     <?php
 
