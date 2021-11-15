@@ -22,11 +22,35 @@ switch($_REQUEST['action']) {
     case 'addPage':
         require_once('addPage.php');
         break;
+    case 'addToList_Process':
+        require_once('addToList_Process.php');
+        break;
+    case 'removeFromList_Process':
+        require_once('removeFromList_Process.php');
+        break;
     case 'moviePage':
         require_once('moviePage.php');
         break;
     case 'searchPage':
         require_once('searchPage.php');
+        break;
+    case 'loginUser':
+        require_once('loginUser.php');
+        break;
+    case 'loginUser_Process':
+        require_once('loginUser_Process.php');
+        break;    
+    case 'addUser':
+        require_once('addUser.php');
+        break;
+    case 'addUser_Process':
+        require_once('addUser_Process.php');
+        break;
+    case 'logoutUser_Process':
+        require_once('logoutUser_Process.php');
+        break;
+    case 'userPage':
+        require_once('userPage.php');
         break;
     case 'main':
     default:

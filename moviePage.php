@@ -51,8 +51,31 @@ $db->set_charset("utf8");
                     <form action="./?action=delete_Process&id=<?= $movie->getId() ?>" method="post">
                     <input type="password" name="pass" placeholder="Admin Password Required" class="form-control" maxlength="20" required>
                     <button type="submit" class="btn btn-secondary">Delete</button>
+                    </form>
                 </div>
-                </form>
+                <?php 
+                if(isset($_SESSION['status']))
+                {
+                    if(in_array($movie->getID(), $_SESSION['movieList']))
+                    {
+                        print("
+                        <div class='col-sm-6'>
+                            <form action='./?action=removeFromList_Process&id=". $movie->getId() ."' method='post'>
+                            <button type='submit' class='btn btn-secondary'>Remove from List</button>
+                            </form>
+                        </div>");
+                    }
+                    else
+                    {
+                        print("
+                        <div class='col-sm-6'>
+                        <form action='./?action=addToList_Process&id=". $movie->getId() ."' method='post'>
+                        <button type='submit' class='btn btn-secondary'>Add to List</button>
+                        </div>");
+                    }
+                }
+                ?>
+                
             </div>
         </div>
     </div>
