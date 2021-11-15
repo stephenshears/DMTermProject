@@ -1,11 +1,11 @@
-CREATE TABLE user ( 
+CREATE TABLE users ( 
 
-userID		INT		AUTO INCREMENT PRIMARY KEY, 
+userID		INT		        AUTO_INCREMENT PRIMARY KEY, 
 
-email 		VARCHAR(50)	NOT NULL, 
+username    VARCHAR(50)     NOT NULL UNIQUE,
 
-fName		VARCHAR(20)	NOT NULL, 
+email 		VARCHAR(50)	    NOT NULL UNIQUE, 
 
-lName		VARCHAR(20)	NOT NULL, 
+passwords   VARCHAR(70)     NOT NULL
 
 ); 

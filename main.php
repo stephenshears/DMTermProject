@@ -1,5 +1,4 @@
 <?php
-
 require_once('classes/Movie.php');
 
 // Get new movie releases
