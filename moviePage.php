@@ -54,6 +54,8 @@ $db->set_charset("utf8");
                     </form>
                 </div>
                 <?php 
+                if(isset($_SESSION['status']))
+                {
                     if(in_array($movie->getID(), $_SESSION['movieList']))
                     {
                         print("
@@ -71,6 +73,7 @@ $db->set_charset("utf8");
                         <button type='submit' class='btn btn-secondary'>Add to List</button>
                         </div>");
                     }
+                }
                 ?>
                 
             </div>
