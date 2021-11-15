@@ -27,6 +27,7 @@ $db->set_charset("utf8");
 
     <title>MovieBlock</title>
     <style>
+
         .dropdown {
             position: relative;
             display: inline-block;
@@ -52,19 +53,6 @@ $db->set_charset("utf8");
         .dropdown a:hover {background-color: #ddd;}
 
         .show {display: block;}
-
-        .dropbtn {
-        background: #f8f9fa;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        }
-
-        .dropbtn:hover, .dropbtn:focus {
-        background-color: 0 0 0 0.5;
-        }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -84,7 +72,7 @@ $db->set_charset("utf8");
             else{
         ?>
                 <div class='dropdown'>
-                    <button onclick='showDropDown()' class='dropbtn'><?php print('' . $_SESSION['user'] . ''); ?></button>
+                    <button onclick='showDropDown()' class='btn btn-light' id="drop"><?php print('' . $_SESSION['user'] . ''); ?></button>
                     <div id='myDropdown' class='dropdown-content'>
                         <a href='./?action=userPage'>My Profile</a>
                         <a href='./?action=logoutUser_Process'>Logout</a>
@@ -119,9 +107,9 @@ $db->set_charset("utf8");
             document.getElementById("myDropdown").classList.toggle("show");
         }
 
-            // Close the dropdown if the user clicks outside of it
+        // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
+            if (!event.target.matches('#drop')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 var i;
                 for (i = 0; i < dropdowns.length; i++) {
