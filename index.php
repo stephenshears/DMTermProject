@@ -26,41 +26,28 @@ $db->set_charset("utf8");
     <link rel="stylesheet" href="stylesheetdb.css">
 
     <title>MovieBlock</title>
-
     <style>
-        .dropbtn {
-        background: #f8f9fa;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        }
-
-        .dropbtn:hover, .dropbtn:focus {
-        background-color: 0 0 0 0.5;
-        }
 
         .dropdown {
-        position: relative;
-        display: inline-block;
+            position: relative;
+            display: inline-block;
         }
 
         .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
         }
 
         .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
         }
 
         .dropdown a:hover {background-color: #ddd;}
@@ -74,29 +61,26 @@ $db->set_charset("utf8");
     <nav class="navbar navbar-expand-lg navbar-light" id="site_nav">
         <a href="./?action=main"><img src="images/Title.jpg" alt="logo" width=376 height = 98></a>
 
-        <div class="text-right" id="addNew">Can't find the movie you want? <a href="./?action=addPage">Add here</a></div>
-
         <?php 
-            if(!isset($_SESSION['status']))
-            {
-                print(" <a href='./?action=loginUser'>
-                            <button type='submit' class='dropbtn'>Login as User</button>
-                        </a>");
-            }
-            else
-            {
-                print(" 
-                        <div class='dropdown'>
-                            <button onclick='showDropDown()' class='dropbtn'>" . $_SESSION['user'] . "</button>
-                            <div id='myDropdown' class='dropdown-content'>
-                                <a href='./?action=userPage'>My Profile</a>
-                                <a href='./?action=logoutUser_Process'>Logout</a>
-                            </div>
-                        </div>
-                    ");
-            }
+            if(!isset($_SESSION['status'])){
         ?>
-    </nav>
+                <a href='./?action=loginUser'>
+                    <button type='submit' class='btn btn-light'>Login as User</button>
+                </a>
+        <?php
+            }
+            else{
+        ?>
+                <div class='dropdown'>
+                    <button onclick='showDropDown()' class='btn btn-light' id="drop"><?php print('' . $_SESSION['user'] . ''); ?></button>
+                    <div id='myDropdown' class='dropdown-content'>
+                        <a href='./?action=userPage'>My Profile</a>
+                        <a href='./?action=logoutUser_Process'>Logout</a>
+                    </div>
+                </div>
+            <?php } ?>
+            <div class="text-right">Can't find the movie you want? <a href="./?action=addPage">Add here</a></div>
+        </nav>
 
     <?php
 
@@ -123,9 +107,9 @@ $db->set_charset("utf8");
             document.getElementById("myDropdown").classList.toggle("show");
         }
 
-            // Close the dropdown if the user clicks outside of it
+        // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
+            if (!event.target.matches('#drop')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 var i;
                 for (i = 0; i < dropdowns.length; i++) {
