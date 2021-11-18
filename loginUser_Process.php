@@ -47,4 +47,8 @@
         header("Location: ./?action=loginUser&error=1");
       }
     }
+    else{
+      print("Access Denied");
+      exit();
+    }
 ?>
