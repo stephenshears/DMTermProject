@@ -24,7 +24,7 @@
                     <input type="number" name="budget" placeholder="Film Budget" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="number" name="runtime" placeholder="Film Runtime in Minutes" min="90" max="300" class="form-control" required>
+                    <input type="number" name="runtime" placeholder="Film Runtime in Minutes" min="30" max="300" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <input type="text" name="description" placeholder="Film Description" class="form-control" maxlength="1000" required>

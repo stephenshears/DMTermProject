@@ -40,7 +40,7 @@ $db->set_charset("utf8");
                     <input type="number" name="budget" value="<?= $movie->getbudget() ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="number" name="runtime" value="<?= $movie->getruntime() ?>" min="90" max="300" class="form-control" required>
+                    <input type="number" name="runtime" value="<?= $movie->getruntime() ?>" min="30" max="300" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <input type="text" name="description" value="<?= $movie->getDescription() ?>" class="form-control" maxlength="1000" required>
