@@ -1,4 +1,6 @@
 <?php
+
+  if(!empty($_POST)){
     $user = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -12,4 +14,9 @@
     } else {
       header("Location: ./?action=addUser&error=1");
     }
+  }
+  else{
+    print("Access Denied");
+    exit();
+  }
 ?>

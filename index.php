@@ -75,7 +75,7 @@ $db->set_charset("utf8");
                     <button onclick='showDropDown()' class='btn btn-light' id="drop"><?php print('' . $_SESSION['user'] . ''); ?></button>
                     <div id='myDropdown' class='dropdown-content'>
                         <a href='./?action=userPage'>My Profile</a>
-                        <a href='./?action=logoutUser_Process'>Logout</a>
+                        <a href='./?action=logoutUser_Process&id=1'>Logout</a>
                     </div>
                 </div>
             <?php } ?>
