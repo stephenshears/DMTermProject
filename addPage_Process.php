@@ -14,6 +14,11 @@
         $movie->setembargo($_REQUEST['embargo']);
 
         if (!$movie->save()) {
+            if(!empty($_REQUEST['genres'])) 
+            {
+                $movie->plugGenres($_REQUEST['genres']);
+            }
+
             header("Location: ./");
         } else {
             header("Location: ./?action=addPage&error=1");

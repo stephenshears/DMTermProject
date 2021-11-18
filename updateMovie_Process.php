@@ -14,6 +14,11 @@
         $movie->setembargo($_REQUEST['embargo']);
 
         if (!$movie->update()) {
+            if(!empty($_REQUEST['genres'])) 
+            {
+                $movie->updateGenres($_REQUEST['genres']);
+            }
+
             header("Location: ./");
         } else {
             header("Location: ./?action=moviePage&error=1");

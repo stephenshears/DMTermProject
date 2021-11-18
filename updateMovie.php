@@ -51,6 +51,26 @@ $db->set_charset("utf8");
                 <div class="form-group">
                     <input type="text" name="URL" value="<?= $movie->getURL() ?>" class="form-control" maxlength="1000">
                 </div>
+                <div class="form-group" style="text-align: center;">
+
+                        <?php
+                            $pullQuery = "SELECT * FROM genre";
+                            $result = mysqli_query($db, $pullQuery);
+
+                            if (!$result) {
+                                print "Error - the query could not be executed";
+                                $error = mysqli_error($db);
+                                print "<p>" . $error . "</p>";
+                                exit;
+                            }
+
+                            while($row = mysqli_fetch_row($result)) {   
+                        ?>
+                            <input type="checkbox" name="genres[]" value="<?= $row[0] ?>">
+                            <label style="margin-right: 17px;"><?= $row[1] ?></label>
+                        <?php }?>
+                    </select>
+                </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-brand btn-block">Next</button>
                 </div>

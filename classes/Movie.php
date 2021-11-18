@@ -197,6 +197,28 @@ class Movie {
         if ($this->id === 0) {
             $this->id = $this->db->insert_id;
         }
+        
+
+        return true;
+    }
+
+    public function plugGenres($genres) {
+        $movieId = $this->db->insert_id;
+        $genreList = array();
+
+        foreach($genres as $genre)
+        {
+            $genreList[] = "('" . $movieId . "', '" . $genre . "')";
+        }
+
+        $genreQuery = "INSERT INTO `movieblock`.`moviegenre` VALUES " . implode(', ', $genreList);
+            if ($this->db->query($genreQuery)) 
+            {
+                print "Error - the genres could not be added";
+                $error =  $this->db->error;
+                print "<p>" . $error . "</p>";
+                return false;
+            }
 
         return true;
     }
@@ -229,7 +251,42 @@ class Movie {
         return true;
     }
 
+    public function clearGenres() {
+        $clearQuery = "DELETE FROM `movieblock`.`moviegenre` WHERE `movieID` = '" . $this->id . "';";
+        if (!$this->db->query($clearQuery)) {
+            print "Error - the genres could not be cleared";
+            $error =  $this->db->error;
+            print "<p>" . $error . "</p>";
+            return false;
+        }
+
+        return true;
+    }
+
+    public function updateGenres($genres) {
+        $this->clearGenres();
+
+        $genreList = array();
+        foreach($genres as $genre)
+        {
+            $genreList[] = "('" . $this->id . "', '" . $genre . "')";
+        }
+
+        $genreQuery = "INSERT INTO `movieblock`.`moviegenre` VALUES " . implode(', ', $genreList);
+            if ($this->db->query($genreQuery)) 
+            {
+                print "Error - the genres could not be added";
+                $error =  $this->db->error;
+                print "<p>" . $error . "</p>";
+                return false;
+            }
+
+        return true;
+    }
+
     public function deleteFrom() {
+        $this->clearGenres();
+        
         $query = "DELETE FROM `movieblock`.`movie` WHERE `movieID` = " . $this->id;
         if ($this->db->query($query)) {
             return true;
