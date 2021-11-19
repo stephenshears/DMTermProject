@@ -45,6 +45,7 @@ $db->set_charset("utf8");
                 <div class="form-group">
                     <input type="text" name="description" value="<?= $movie->getDescription() ?>" class="form-control" maxlength="1000" required>
                 </div>
+                <p class="lead">Embargo:</p>
                 <div class="form-group">
                     <input type="date" name="embargo" value="<?= $movie->getembargo() ?>" class="form-control">
                 </div>
