@@ -16,7 +16,7 @@ foreach($_SESSION['movieList'] as $userPick)
         <br>
         <div class="row align-items-start">
         <?php foreach ($movieIndex as $movie) { ?>
-            <div class="col-sm-3">
+            <div class="col-sm-3" style="height: 330px; width: auto;">
             <a href="./?action=moviePage&id=<?= $movie->getId() ?>">
                 <li class="list-group-item">
                     <img class="card-img" src="<?= $movie->getURL() ?>" alt="<?= $movie->gettitle() ?>" style="height: 200px; width: auto;">

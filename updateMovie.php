@@ -67,7 +67,10 @@ $db->set_charset("utf8");
                             while($row = mysqli_fetch_row($result)) {   
                         ?>
                             <input type="checkbox" name="genres[]" value="<?= $row[0] ?>">
-                            <label style="margin-right: 17px;"><?= $row[1] ?></label>
+                            <label style="margin-right: 20px;"><?= $row[1] ?></label>
+                            <?php if($row[0] == 8){ ?>
+                                <br>
+                            <?php } ?>
                         <?php }?>
                     </select>
                 </div>
