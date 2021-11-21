@@ -1,7 +1,0 @@
-CREATE TABLE star ( 
-
-starID		INT			AUTO INCREMENT PRIMARY KEY, 
-
-starName		VARCHAR(40)		NOT NULL, 
-
-); 
