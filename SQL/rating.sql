@@ -1,10 +1,8 @@
 CREATE TABLE rating (
 
-ratingID     INT    AUTO_INCREMENT,
-
 movieID     INT,
 
-PRIMARY KEY(movieID, ratingID),
+PRIMARY KEY(movieID),
 
 FOREIGN KEY(movieID)
 
