@@ -8,7 +8,7 @@ PRIMARY KEY(movieID, ratingID),
 
 FOREIGN KEY(movieID)
 
-REFERENCES  movies(movieID),
+REFERENCES  movies(movieID)
 
 ON DELETE CASCADE,
 
