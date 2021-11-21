@@ -36,6 +36,12 @@
                 <div class="form-group">
                     <input type="text" name="URL" placeholder="Film Cover Art URL" class="form-control" maxlength="1000">
                 </div>
+                <div class="form-group">
+                    <input type="number" step="0.1" name="imdbRating" placeholder="Film IMDB Rating out of 10" min="0" max="10" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="tomatoRating" placeholder="Film Rotten Tomato Rating Percentage" min="0" max="100" class="form-control" required>
+                </div>
                 <div class="form-group" style="text-align: center;">
 
                         <?php

@@ -2,6 +2,7 @@
 
     if(!empty($_POST)){
         require_once('classes/Movie.php');
+        require_once('classes/Rating.php');
 
         $movie = new Movie;
         $movie->setId($_REQUEST['id']);
@@ -18,11 +19,24 @@
             {
                 $movie->updateGenres($_REQUEST['genres']);
             }
+            $rating = new Rating;
 
-            header("Location: ./");
-        } else {
-            header("Location: ./?action=moviePage&error=1");
+            $rating->setimdbRating($_REQUEST['imdbRating']);
+            $rating->settomatoRating($_REQUEST['tomatoRating']);
+            $rating->setMovieID($_REQUEST['id']);
+            (float)$bloc = ((float)$_REQUEST['imdbRating'] + (float)($_REQUEST['tomatoRating'] / 10)) / 2;
+            $rating->setblocRating((float)$bloc);
+
+            if(!$rating->update()){
+                header("Location: ./");
+            }
+            else{
+                header("Location: ./?action=updateMovie&error=1");
+            }
         }
+            else{
+                header("Location: ./?action=updateMovie&error=2");
+            }
     }
     else{
         print("Access Denied");

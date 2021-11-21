@@ -194,7 +194,7 @@ class Movie {
             return false;
         }
 
-        if ($this->id === 0) {
+        if ($this->id = 0) {
             $this->id = $this->db->insert_id;
         }
         
