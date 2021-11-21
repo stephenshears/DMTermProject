@@ -1,21 +1,19 @@
 CREATE TABLE rating (
 
-ratingID     INT    AUTO_INCREMENT,
-
 movieID     INT,
 
-PRIMARY KEY(movieID, ratingID),
+PRIMARY KEY(movieID),
 
 FOREIGN KEY(movieID)
 
-REFERENCES  movies(movieID)
+REFERENCES movies(movieID)
 
 ON DELETE CASCADE,
 
-blocRating      INT     NOT NULL,
+blocRating      FLOAT     NOT NULL,
 
-imdbRating    INT     NOT NULL,
+imdbRating    FLOAT     NOT NULL,
 
-metaRating      INT     NOT NULL
+tomatoRating      INT     NOT NULL
 
 ); 

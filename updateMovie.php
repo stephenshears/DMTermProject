@@ -1,6 +1,11 @@
 <?php
 
 require_once('classes/Movie.php');
+require_once('classes/Rating.php');
+
+if(array_key_exists('error', $_REQUEST) && $_REQUEST['error'] == '1'){
+        echo '<div class="alert alert-danger">Error - The input for the ratings table failed</div>';
+    }
 
 if (!array_key_exists('id', $_REQUEST) || !is_numeric($_REQUEST['id'])) {
     echo '<div class="alert alert-danger">Error - No movie ID found</div>';
@@ -19,6 +24,9 @@ $searchQuery = "SELECT pass FROM movieblock.admin WHERE adminID = 0 LIMIT 1";
     if($info['pass'] == $_REQUEST['pass']){
 
 $movie = new Movie((int)$_REQUEST['id']);
+
+$rating = new Rating((int)$_REQUEST['id']);
+
 $db->set_charset("utf8");
 
 ?>
@@ -51,6 +59,12 @@ $db->set_charset("utf8");
                 </div>
                 <div class="form-group">
                     <input type="text" name="URL" value="<?= $movie->getURL() ?>" class="form-control" maxlength="1000">
+                </div>
+                <div class="form-group">
+                    <input type="number" step="0.1" name="imdbRating" value="<?= $rating->getimdbRating() ?>" placeholder="Film IMDB Rating out of 10" min="0" max="10" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="tomatoRating" value="<?= $rating->gettomatoRating() ?>" placeholder="Film Rotten Tomato Rating Percentage" min="0" max="100" class="form-control" required>
                 </div>
                 <div class="form-group" style="text-align: center;">
 

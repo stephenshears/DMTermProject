@@ -1,6 +1,7 @@
 <?php
 
 require_once('classes/Movie.php');
+require_once('classes/Rating.php');
 
 if (!array_key_exists('id', $_REQUEST) || !is_numeric($_REQUEST['id'])) {
     echo '<div class="alert alert-danger">Error - No movie ID found</div>';
@@ -8,6 +9,7 @@ if (!array_key_exists('id', $_REQUEST) || !is_numeric($_REQUEST['id'])) {
 }
 
 $movie = new Movie((int)$_REQUEST['id']);
+$rating = new Rating((int)$_REQUEST['id']);
 $db->set_charset("utf8");
 
 ?>
@@ -39,6 +41,15 @@ $db->set_charset("utf8");
                 <p><?php print $movie->getruntime() ?> minutes</p>
                 <h4>Budget</h4>
                 <p>$<?= $movie->getbudget() ?></p>
+                <hr>
+                <h2>Review Scores </h2>
+                <h5><b>IMDb Score:</b></h5> 
+                <p><b><?= $rating->getimdbRating() ?></b> / 10 </p>
+                <h5><b>Rotten Tomatoes Score:</b></h5>
+                <p><b><?= $rating->gettomatoRating() ?></b>% </p>
+                <h4><b>BlocScore:</b></h4>
+                <h5><b><?= $rating->getblocRating() ?></b> / 10</h5>
+
                 <hr>
                 <div class="col-sm-6">
                     <form action="./?action=updateMovie&id=<?= $movie->getId() ?>" method="post">

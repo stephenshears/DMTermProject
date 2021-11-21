@@ -2,6 +2,7 @@
 
     if(!empty($_POST)){
         require_once('classes/Movie.php');
+        require_once('classes/Rating.php');
 
         $movie = new Movie;
 
@@ -18,9 +19,23 @@
             {
                 $movie->plugGenres($_REQUEST['genres']);
             }
+            $rating = new Rating;
 
-            header("Location: ./");
-        } else {
+            $rating->setimdbRating($_REQUEST['imdbRating']);
+            $rating->settomatoRating($_REQUEST['tomatoRating']);
+            $rating->setMovieID($movie->getId());
+            (float)$bloc = ((float)$_REQUEST['imdbRating'] + (float)($_REQUEST['tomatoRating'] / 10)) / 2;
+            $rating->setblocRating((float)$bloc);
+
+            if(!$rating->save()){
+                header("Location: ./");
+            }
+            else{
+                header("Location: ./?action=addPage&error=1");
+            }
+
+        }
+        else {
             header("Location: ./?action=addPage&error=1");
         }
     }
