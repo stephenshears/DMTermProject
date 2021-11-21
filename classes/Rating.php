@@ -100,8 +100,19 @@ class Rating {
         return true;
     }
 
-    public function update() {
+    public function clear(){
+        $clearQuery = "DELETE FROM `movieblock`.`rating` WHERE `movieID` = '" . $this->movieID . "';";
+        if (!$this->db->query($clearQuery)) {
+            print "Error - the rating could not be cleared";
+            $error =  $this->db->error;
+            print "<p>" . $error . "</p>";
+            return false;
+        }
 
+        return true;
+    }
+
+    public function update() {
         $qParts = array();
 
         $qParts[] = "`blocRating` = '" . $this->db->real_escape_string($this->blocRating) . "'";

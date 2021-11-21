@@ -13,13 +13,16 @@
         if($info['pass'] == $_REQUEST['pass']){
 
         require_once('classes/Movie.php');
+        require_once('classes/Rating.php');
 
         $movie = new Movie((int)$_REQUEST['id']);
+        $rating = new Rating($movie->getId());
 
         if(!$movie->deleteFrom()){
             exit();
             print("The delete has failed.");
         }
+        $rating->clear();
         print("The film ");
         print($movie->gettitle());
         print(" has been removed");

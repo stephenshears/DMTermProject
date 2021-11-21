@@ -23,7 +23,7 @@
 
             $rating->setimdbRating($_REQUEST['imdbRating']);
             $rating->settomatoRating($_REQUEST['tomatoRating']);
-            $rating->setMovieID($movie->getID());
+            $rating->setMovieID($movie->getId());
             (float)$bloc = ((float)$_REQUEST['imdbRating'] + (float)($_REQUEST['tomatoRating'] / 10)) / 2;
             $rating->setblocRating((float)$bloc);
 

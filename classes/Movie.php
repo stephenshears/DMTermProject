@@ -193,17 +193,14 @@ class Movie {
             print "<p>" . $error . "</p>";
             return false;
         }
-
-        if ($this->id = 0) {
-            $this->id = $this->db->insert_id;
-        }
-        
+        $this->id = $this->db->insert_id;
 
         return true;
     }
 
     public function plugGenres($genres) {
         $movieId = $this->db->insert_id;
+        $this->setId($movieId);
         $genreList = array();
 
         foreach($genres as $genre)
@@ -244,7 +241,7 @@ class Movie {
             return false;
         }
 
-        if ($this->id === 0) {
+        if ($this->id = 0) {
             $this->id = $this->db->insert_id;
         }
 
