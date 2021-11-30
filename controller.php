@@ -52,6 +52,12 @@ switch($_REQUEST['action']) {
     case 'userPage':
         require_once('userPage.php');
         break;
+    case 'addReview':
+        require_once('addReview_Process.php');
+        break;
+    case 'removeReview':
+        require_once('removeReview_Process.php');
+        break;
     case 'main':
     default:
         require_once('main.php');
