@@ -193,7 +193,12 @@ class Movie {
             print "<p>" . $error . "</p>";
             return false;
         }
-        $this->id = $this->db->insert_id;
+        
+        if($this->id == 0)
+        {
+            $this->id = $this->db->insert_id;
+        }
+        
 
         return true;
     }

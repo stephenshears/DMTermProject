@@ -31,6 +31,7 @@ $db->set_charset("utf8");
         .dropdown {
             position: relative;
             display: inline-block;
+            right: 150px;
         }
 
         .dropdown-content {
@@ -61,16 +62,11 @@ $db->set_charset("utf8");
     <nav class="navbar navbar-expand-lg navbar-light" id="site_nav">
         <a href="./?action=main"><img src="images/Title.jpg" alt="logo" width=376 height = 98></a>
 
-        <?php 
-            if(!isset($_SESSION['status'])){
-        ?>
+        <?php if(!isset($_SESSION['status'])){ ?>
                 <a href='./?action=loginUser'>
                     <button type='submit' class='btn btn-light'>Login as User</button>
                 </a>
-        <?php
-            }
-            else{
-        ?>
+        <?php } else { ?>
                 <div class='dropdown'>
                     <button onclick='showDropDown()' class='btn btn-light' id="drop"><?php print('' . $_SESSION['user'] . ''); ?></button>
                     <div id='myDropdown' class='dropdown-content'>
@@ -78,8 +74,10 @@ $db->set_charset("utf8");
                         <a href='./?action=logoutUser_Process&id=1'>Logout</a>
                     </div>
                 </div>
-            <?php } ?>
+        <?php if ($_SESSION['status'] == 1) { ?>
             <div class="text-right">Can't find the movie you want? <a href="./?action=addPage">Add here</a></div>
+        <?php } }?>
+
         </nav>
 
     <?php

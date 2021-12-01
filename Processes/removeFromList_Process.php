@@ -1,5 +1,6 @@
 <?php
-if(!empty($_POST)){
+
+if(isset($_POST)){
     $query = "DELETE FROM userlist WHERE movieID =" . $_REQUEST['id'] . " AND userID=" . $_SESSION['id'] . ";";
         $result = $db->query($query);
         if (!$result) {
@@ -11,10 +12,11 @@ if(!empty($_POST)){
 
         $_SESSION['movieList'] = array_diff( $_SESSION['movieList'], [$_REQUEST['id']] );
 
-        header("Location: ./?action=main.php");
+        header("Location: ./?action=moviePage&id=" . $_REQUEST['id']);
 }
-else{
-    print("Access Denied");
+else
+{
+    print("Error: Access Denied");
     exit();
 }
 ?>

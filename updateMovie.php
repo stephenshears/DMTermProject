@@ -12,7 +12,7 @@ if (!array_key_exists('id', $_REQUEST) || !is_numeric($_REQUEST['id'])) {
     return;
 }
 
-$searchQuery = "SELECT pass FROM movieblock.admin WHERE adminID = 0 LIMIT 1";
+$searchQuery = "SELECT passwords FROM users WHERE adminFlag = 1 LIMIT 1";
     $result = $db->query($searchQuery);
     if (!$result) {
         print "Error - the query could not be executed";
@@ -21,7 +21,7 @@ $searchQuery = "SELECT pass FROM movieblock.admin WHERE adminID = 0 LIMIT 1";
         exit;
     }
     $info = $result->fetch_assoc();
-    if($info['pass'] == $_REQUEST['pass']){
+    if(password_verify($_REQUEST['pass'], $info['passwords'])){
 
 $movie = new Movie((int)$_REQUEST['id']);
 
