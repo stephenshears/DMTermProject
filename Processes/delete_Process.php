@@ -1,7 +1,7 @@
 <?php
 
     if(!empty($_POST)){
-    $searchQuery = "SELECT pass FROM movieblock.admin WHERE adminID = 0 LIMIT 1";
+    $searchQuery = "SELECT passwords FROM users WHERE adminFlag = 1 LIMIT 1";
         $result = $db->query($searchQuery);
         if (!$result) {
             print "Error - the query could not be executed";
@@ -10,7 +10,7 @@
             exit;
         }
         $info = $result->fetch_assoc();
-        if($info['pass'] == $_REQUEST['pass']){
+        if(password_verify($_REQUEST['pass'], $info['passwords'])){
 
         require_once('classes/Movie.php');
         require_once('classes/Rating.php');

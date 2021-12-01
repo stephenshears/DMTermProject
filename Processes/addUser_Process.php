@@ -7,10 +7,12 @@
 
     $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO users (username ,email , passwords) VALUES ('$user', '$email', '$hashed');";
-    $result = mysqli_query($db, $query);
+    $query = $db->prepare("INSERT INTO users (username ,email , passwords) VALUES (?, ?, ?);");
+    $query->bind_param("sss", $user, $email, $hashed);
+    $result = $query->execute();
+
     if ($result) {
-      header("Location: ./");
+      header("Location: ./?action=loginUser");
     } else {
       header("Location: ./?action=addUser&error=1");
     }

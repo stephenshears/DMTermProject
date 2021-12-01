@@ -3,16 +3,23 @@
         echo '<div class="alert alert-danger">Error - No movie ID found</div>';
         return;
     }
-    $query = "INSERT INTO userlist VALUES (" . $_SESSION['id'] . "," . $_REQUEST['id'] . ");";
-    $result = $db->query($query);
+
+    $userID = $_SESSION['id'];
+    $movieID = $_REQUEST['id'];
+    $username =  $_SESSION['user'];
+    $review = $_POST['review'];
+    $rating = (int)$_POST['rate'] * 2;
+
+    $statement = $db->prepare("INSERT INTO userratings VALUES (?,?,?,?,?);");
+    $statement->bind_param("iissi", $userID, $movieID, $username, $review, $rating);
+    $result = $statement->execute();
+
     if (!$result) {
         print "Error - the query could not be executed";
         $error = mysqli_error($db);
         print "<p>" . $error . "</p>";
         exit;
     }
-    
-    $_SESSION['movieList'][] = $_REQUEST['id'];
 
     header("Location: ./?action=main.php");
 ?>

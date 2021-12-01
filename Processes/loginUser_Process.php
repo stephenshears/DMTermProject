@@ -19,7 +19,7 @@
       $info = mysqli_fetch_assoc($result);
       if(password_verify($password, $info['passwords']))
       {
-        $_SESSION['status'] = 1;
+        $_SESSION['status'] = $info['adminFlag'];
         $_SESSION['id'] = $info['userID'];
         $_SESSION['user'] = $user;
 
